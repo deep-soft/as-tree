@@ -1,9 +1,11 @@
 # 2023-06-12 19:40
-name: release
+name: Release
 
 env:
   MIN_SUPPORTED_RUST_VERSION: "1.64.0"
   CICD_INTERMEDIATES_DIR: "_cicd-intermediates"
+  TAG_PREFIX: "v"
+  TAG_SUFFIX: "-release"
 
 on:
   workflow_dispatch:
@@ -319,13 +321,12 @@ jobs:
       id: is-release
       shell: bash
       run: |
-        #unset IS_RELEASE ; if [[ $GITHUB_REF =~ ^refs/tags/v[0-9].* ]]; then IS_RELEASE='true' ; fi
-        IS_RELEASE='true'
+        unset IS_RELEASE ; if [[ $GITHUB_REF =~ ^refs/tags/v[0-9].* ]]; then IS_RELEASE='true' ; fi
         echo "IS_RELEASE=${IS_RELEASE}" >> $GITHUB_OUTPUT
 
     - name: Publish archives and packages
       uses: softprops/action-gh-release@v1
-      if: steps.is-release.outputs.IS_RELEASE
+      #if: steps.is-release.outputs.IS_RELEASE
       with:
         files: |
           ${{ steps.package.outputs.PKG_PATH }}
