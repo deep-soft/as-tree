@@ -1,4 +1,4 @@
-# 2023-06-12 19:20
+# 2023-06-12 19:30
 name: release
 
 env:
@@ -209,7 +209,7 @@ jobs:
         cp "README.md" "LICENSE.md" "CHANGELOG.md" "$ARCHIVE_DIR"
 
         # Autocompletion files
-        cp -r autocomplete "${ARCHIVE_DIR}"
+        #cp -r autocomplete "${ARCHIVE_DIR}"
 
         # base compressed package
         pushd "${PKG_STAGING}/" >/dev/null
