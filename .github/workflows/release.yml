@@ -1,4 +1,4 @@
-# 2023-06-12 19:10
+# 2023-06-12 19:20
 name: release
 
 env:
@@ -206,7 +206,7 @@ jobs:
         cp 'doc/${{ env.PROJECT_NAME }}.1' "$ARCHIVE_DIR"
 
         # README, LICENSE and CHANGELOG files
-        cp "README.md" "LICENSE-MIT" "LICENSE-APACHE" "CHANGELOG.md" "$ARCHIVE_DIR"
+        cp "README.md" "LICENSE.md" "CHANGELOG.md" "$ARCHIVE_DIR"
 
         # Autocompletion files
         cp -r autocomplete "${ARCHIVE_DIR}"
@@ -258,8 +258,7 @@ jobs:
 
         # README and LICENSE
         install -Dm644 "README.md" "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/README.md"
-        install -Dm644 "LICENSE-MIT" "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/LICENSE-MIT"
-        install -Dm644 "LICENSE-APACHE" "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/LICENSE-APACHE"
+        install -Dm644 "LICENSE.md" "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/LICENSE.md"
         install -Dm644 "CHANGELOG.md" "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/changelog"
         gzip -n --best "${DPKG_DIR}/usr/share/doc/${DPKG_BASENAME}/changelog"
 
